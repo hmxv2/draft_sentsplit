@@ -1,0 +1,21 @@
+文件：
+pre_training_split_and_fusion.ipynb v2经过删减的版本，没有拷贝机制，embedding size=100，hidden size=256时，bleu不高
+pre_training_split_and_fusion_v2.ipynb 保存原始拼凑版本
+pre_training_split_and_fusion_copy.ipynb 使用了拷贝机制
+supervised_training_split_and_fusion_copy 上一个文件的有监督版本，其实只是将加载伪标签数据改为加载标签数据
+
+
+draft_language_mode 语言模型，基本成型
+draft_language_model-if_ppl_work 上一个语言模型的基础上增加了ppl计算，并且使用随机颠倒训练集中的n个词组的方式验证ppl是否有效
+
+
+train_split_model 在预训练的基础上进一步使用非监督方法训练split和fusion model
+train_split_model-semi-supervised 在预训练的基础上使用非监督和监督数据进行训练
+
+
+
+训练：
+速度上，train_split_model-semi-supervised中topk=2，batch_size=50，使用fusion和split交替训练的方式，训练split耗时较长，大约是30s，训练fusion大约是5s
+因此可以算出50w条样本大约需要50h
+
+
